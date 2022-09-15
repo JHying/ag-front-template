@@ -1,0 +1,9 @@
+.header-section {
+  height: 8em;
+  background-color: black;
+}
+
+.header-section .navbar {
+  height: 100%;
+  background-color: black;
+}

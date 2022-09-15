@@ -1,0 +1,20 @@
+.login-section {
+  min-height: 61em;
+  background-color: aliceblue;
+  background-position: cover;
+  background-size: cover;
+  position: relative;
+  color: black;
+}
+
+.login-section .container-fluid {
+  height: 100%;
+  padding-top: 9%;
+  padding-right: 6%;
+}
+
+.title {
+  text-align: center;
+  margin: 0;
+  line-height: 3;
+}

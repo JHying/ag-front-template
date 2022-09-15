@@ -1,0 +1,44 @@
+<app-header-toolbar></app-header-toolbar>
+<mat-sidenav-container>
+  <!-- 左側選單 -->
+  <mat-sidenav #sideNav mode="side" opened="true" class="sidenav-section">
+    <!-- <div>
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="getSideNavStatus(sideNav)">
+        關閉選單
+      </button>
+    </div> -->
+    <!-- 選單內容 -->
+    <div>
+      <mat-accordion multi="false" displayMode="flat">
+        <mat-expansion-panel *ngFor="let sideNav of sideNavList$ | async">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon>{{ sideNav.pageIcon }}</mat-icon
+              >{{ sideNav.pageName }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list *ngFor="let child of sideNav.childPages">
+            <a routerLink="{{ child.pageUrl }}" mat-list-item
+              ><li>{{ child.pageName }}</li></a
+            >
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </mat-sidenav>
+  <!-- 右側內容 -->
+  <mat-sidenav-content>
+    <!-- 左選單縮放按鈕 -->
+    <div>
+      <button mat-button color="warn" (click)="sideNav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div class="content-section">
+      <app-main></app-main>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

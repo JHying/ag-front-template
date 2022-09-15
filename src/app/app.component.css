@@ -1,0 +1,5 @@
+.my-charts-tooltip {
+  /* override the style */
+  /* 預設的charts-tooltip會以全頁為範圍,以dialog顯示時會溢出,這邊改成固定範圍 */
+  position: fixed;
+}

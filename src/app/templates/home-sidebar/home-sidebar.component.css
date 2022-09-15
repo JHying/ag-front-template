@@ -1,0 +1,15 @@
+.sidenav-section {
+  background-color: grey;
+  color: white;
+  min-width: 13em;
+  text-align: center;
+}
+
+.content-section {
+  min-height: 61em;
+  background-color: aliceblue;
+  background-position: cover;
+  background-size: cover;
+  position: relative;
+  color: black;
+}

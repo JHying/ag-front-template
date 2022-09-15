@@ -1,0 +1,89 @@
+<section class="header-section">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <!-- FOR RWD Toggle button -->
+      <!-- <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+      >
+        <mat-icon>menu</mat-icon>
+      </button> -->
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0" routerLink="profile">
+        <img src="/assets/img/logo_white.png" height="50" loading="lazy" />
+      </a>
+
+      <!-- 導覽列內容 -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Dashboard</a>
+        </li> -->
+        </ul>
+        <!-- Left links -->
+      </div>
+
+      <!-- 右邊選單 -->
+      <div class="d-flex align-items-center">
+        <!-- 小鈴鐺 登入才出現 -->
+        <!-- <div class="dropdown" *ngIf="login$">
+          <a
+            class="text-reset me-3 dropdown-toggle hidden-arrow"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <mat-icon>notifications</mat-icon>
+            <span class="badge rounded-pill badge-notification bg-danger">1</span>
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+            <li>
+              <a class="dropdown-item" href="#">Some news</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Another news</a>
+            </li>
+          </ul>
+        </div> -->
+        <!-- 使用者選單 登入才出現 -->
+        <div class="dropdown" *ngIf="loginStatus">
+          <a
+            class="text-reset me-3 dropdown-toggle hidden-arrow"
+            href="#"
+            id="navbarDropdownMenuAvatar"
+            role="button"
+            data-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <mat-icon color="accent" size="5">account_circle</mat-icon>
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="navbarDropdownMenuAvatar"
+          >
+            <li>
+              <button class="dropdown-item" routerLink="/main/profile">帳戶資訊</button>
+            </li>
+            <!-- <li>
+              <button class="dropdown-item" href="#">個人設定</button>
+            </li> -->
+            <li>
+              <button class="dropdown-item" (click)="logout()">登出</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+</section>
