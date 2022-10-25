@@ -14,6 +14,7 @@ export const config: any = {
 
   //其他api
   testUrl: baseUrl + "test",
+  downloadCourseUrl: baseUrl + "report/course/summary",
 }
 
 export const key: any = {

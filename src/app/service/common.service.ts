@@ -10,11 +10,14 @@ import { HttpClientService } from "./httpclient.service";
 })
 export class CommonService {
 
-  constructor(private httpserv: HttpClientService) {;
+  constructor(private httpserv: HttpClientService) {
   }
 
   public getSideNav(userInfo: UserInfo): Observable<ResponseObj> {
     return this.httpserv.httpPost(config.sideNavUrl, userInfo);
   }
 
+  public getCourseReport(): Observable<any> {
+    return this.httpserv.httpDownloadFile(config.downloadCourseUrl);
+  }
 }

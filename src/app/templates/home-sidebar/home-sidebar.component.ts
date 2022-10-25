@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDrawerToggleResult, MatSidenav } from "@angular/material/sidenav";
+import { FileSaverDirective, FileSaverService } from 'ngx-filesaver';
 import { Observable, of } from "rxjs";
 import { ResponseObj } from "src/app/interface/common";
 import { JwtUser } from "src/app/interface/user";
@@ -13,15 +14,17 @@ import { BaseComponent } from "./../base/base.component";
   selector: "app-home-sidebar",
   templateUrl: "./home-sidebar.component.html",
   styleUrls: ["./home-sidebar.component.css"],
-  providers: [CommonService, LoginService],
+  providers: [CommonService, LoginService, FileSaverDirective],
 })
 export class HomeSidebarComponent extends BaseComponent implements OnInit {
   status: MatDrawerToggleResult;
   sideNavList$: Observable<SideNavObj[]>;
+  loading: boolean = false;
 
   constructor(
     private commonService: CommonService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private fileSaverService: FileSaverService
   ) {
     super();
   }
@@ -56,4 +59,17 @@ export class HomeSidebarComponent extends BaseComponent implements OnInit {
         sessionStorage.setItem(SysCode.token_key, data.result);
       });
   }
+
+  downloadCourse() {
+    this.loading = true;
+    this.commonService
+      .getCourseReport()
+      .pipe(super.takeUntilDestroy())
+      .subscribe((data) => {
+        var blob = new Blob([data.body], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
+        this.fileSaverService.save(blob, '復健紀錄.xlsx');
+        this.loading = false;
+      });
+  }
+
 }

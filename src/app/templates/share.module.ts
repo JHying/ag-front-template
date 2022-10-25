@@ -37,6 +37,7 @@ import { BaseComponent } from "./base/base.component";
     MatDividerModule,
     AgChartsAngularModule,
     MatAutocompleteModule,
+    FileSaverModule
   ],
   exports: [
     MatToolbarModule,
@@ -56,6 +57,7 @@ import { BaseComponent } from "./base/base.component";
     MatDividerModule,
     AgChartsAngularModule,
     MatAutocompleteModule,
+    FileSaverModule
   ],
   declarations: [BaseComponent],
 })
