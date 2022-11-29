@@ -12,18 +12,17 @@
     </div> -->
     <!-- 選單內容 -->
     <div>
-      <mat-accordion multi="false" displayMode="flat">
-        <mat-expansion-panel *ngFor="let sideNav of sideNavList$ | async">
+      <mat-accordion multi="true" displayMode="flat">
+        <mat-expansion-panel *ngFor="let sideNav of sideNavList$ | async" [expanded]="true">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <mat-icon>{{ sideNav.pageIcon }}</mat-icon
-              >{{ sideNav.pageName }}
+              <mat-icon>{{ sideNav.pageIcon }}</mat-icon>{{ sideNav.pageName }}
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-nav-list *ngFor="let child of sideNav.childPages">
-            <a routerLink="{{ child.pageUrl }}" mat-list-item
-              ><li>{{ child.pageName }}</li></a
-            >
+            <a routerLink="{{ child.pageUrl }}" mat-list-item>
+              <li>{{ child.pageName }}</li>
+            </a>
           </mat-nav-list>
         </mat-expansion-panel>
       </mat-accordion>
@@ -34,7 +33,7 @@
     <!-- 左選單縮放按鈕 -->
     <div>
       <button mat-button color="warn" (click)="sideNav.toggle()">
-        <mat-icon>menu</mat-icon>
+        <mat-icon>menu</mat-icon>選單收合
       </button>
     </div>
     <div class="content-section">

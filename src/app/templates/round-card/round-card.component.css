@@ -1,0 +1,23 @@
+.bg-liner {
+  background: linear-gradient(135deg, #272635, #0075a2, #9ad1d4);
+}
+.bg-c-liner {
+  background: linear-gradient(
+    135deg,
+    #4775ae 0%,
+    #6092cf 30%,
+    #77b6ea 45%,
+    #77b6ea 70%,
+    #16f4d0 90%
+  );
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  /* ★ */
+}
+.rounded-size3 {
+  border-radius: 3rem !important;
+}

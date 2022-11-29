@@ -15,6 +15,7 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AgChartsAngularModule } from "ag-charts-angular";
+import { FileSaverModule } from "ngx-filesaver";
 import { BaseComponent } from "./base/base.component";
 
 @NgModule({
@@ -22,7 +23,6 @@ import { BaseComponent } from "./base/base.component";
     MatToolbarModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    // 使用angular 裡面表單常用指令，像[(ngModel)]等
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,

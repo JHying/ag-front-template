@@ -1,14 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { MatDrawerToggleResult, MatSidenav } from "@angular/material/sidenav";
+import { Component, OnInit } from '@angular/core';
+import { MatDrawerToggleResult, MatSidenav } from '@angular/material/sidenav';
 import { FileSaverDirective, FileSaverService } from 'ngx-filesaver';
-import { Observable, of } from "rxjs";
-import { ResponseObj } from "src/app/interface/common";
-import { JwtUser } from "src/app/interface/user";
-import { SideNavObj } from "./../../interface/common";
-import { SysCode } from "./../../interface/syscode";
-import { CommonService } from "./../../service/common.service";
-import { LoginService } from "./../../service/login.service";
-import { BaseComponent } from "./../base/base.component";
+import { Observable, of } from 'rxjs';
+import { ResponseObj } from 'src/app/interface/common';
+import { JwtUser } from 'src/app/interface/user';
+
+import { SideNavObj } from './../../interface/common';
+import { SysCode } from './../../interface/syscode';
+import { CommonService } from './../../service/common.service';
+import { LoginService } from './../../service/login.service';
+import { BaseComponent } from './../base/base.component';
 
 @Component({
   selector: "app-home-sidebar",
@@ -60,16 +61,16 @@ export class HomeSidebarComponent extends BaseComponent implements OnInit {
       });
   }
 
-  downloadCourse() {
-    this.loading = true;
-    this.commonService
-      .getCourseReport()
-      .pipe(super.takeUntilDestroy())
-      .subscribe((data) => {
-        var blob = new Blob([data.body], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
-        this.fileSaverService.save(blob, '復健紀錄.xlsx');
-        this.loading = false;
-      });
-  }
+  // downloadCourse() {
+  //   this.loading = true;
+  //   this.commonService
+  //     .getCourseReport()
+  //     .pipe(super.takeUntilDestroy())
+  //     .subscribe((data) => {
+  //       var blob = new Blob([data.body], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
+  //       this.fileSaverService.save(blob, '復健紀錄.xlsx');
+  //       this.loading = false;
+  //     });
+  // }
 
 }
