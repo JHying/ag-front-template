@@ -1,8 +1,9 @@
-import { MatDialogConfig } from "@angular/material/dialog";
-import { ActivatedRoute } from "@angular/router";
-import { AgCartesianSeriesTooltipRendererParams } from "ag-charts-community";
-import JSEncrypt from "jsencrypt";
-import { key } from "./../app.config";
+import { MatDialogConfig } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { AgCartesianSeriesTooltipRendererParams } from 'ag-charts-community';
+import JSEncrypt from 'jsencrypt';
+
+import { key } from './../app.config';
 
 export interface DialogData {
   id: any;
@@ -11,7 +12,7 @@ export interface DialogData {
 }
 
 export class Utils {
-  constructor() {}
+  constructor() { }
 
   public static webScrollTo(elementId: string, route: ActivatedRoute) {
     route.fragment.subscribe((f) => {

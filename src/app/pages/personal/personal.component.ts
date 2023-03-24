@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
-import { SysCode } from "src/app/interface/syscode";
-import { Role } from "./../../interface/role";
-import { UserInfo } from "./../../interface/user";
+import { Component, OnInit } from '@angular/core';
+import { SysCode } from 'src/app/interface/syscode';
+
+import { Role } from './../../interface/role';
+import { UserInfo } from './../../interface/user';
 
 @Component({
   selector: "app-personal",

@@ -1,4 +1,5 @@
 <app-header-toolbar></app-header-toolbar>
+<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
 <mat-sidenav-container>
   <!-- 左側選單 -->
   <mat-sidenav #sideNav mode="side" opened="true" class="sidenav-section">
@@ -11,22 +12,23 @@
       </button>
     </div> -->
     <!-- 選單內容 -->
-    <div>
-      <mat-accordion multi="true" displayMode="flat">
-        <mat-expansion-panel *ngFor="let sideNav of sideNavList$ | async" [expanded]="true">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-icon>{{ sideNav.pageIcon }}</mat-icon>{{ sideNav.pageName }}
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <mat-nav-list *ngFor="let child of sideNav.childPages">
-            <a routerLink="{{ child.pageUrl }}" mat-list-item>
-              <li>{{ child.pageName }}</li>
-            </a>
-          </mat-nav-list>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
+    <mat-accordion multi="false" displayMode="flat">
+      <mat-expansion-panel *ngFor="let sideNav of sideNavList" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="matPanelSymbol">
+              <mat-icon>{{ sideNav.pageIcon }}</mat-icon>
+            </div>
+            <div class="matPanelText">{{ sideNav.pageName }}</div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="{{ child.pageUrl }}" *ngFor="let child of sideNav.childPages">
+            <li [ngClass]="{'focus': checkRouterUrl(child.pageUrl) }">{{ child.pageName }}</li>
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-sidenav>
   <!-- 右側內容 -->
   <mat-sidenav-content>

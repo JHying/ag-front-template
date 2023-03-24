@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SelectItem } from 'src/app/interface/common';
+import { RoundCardItem } from 'src/app/interface/common';
 
 @Component({
   selector: 'my-round-card',
@@ -9,7 +9,7 @@ import { SelectItem } from 'src/app/interface/common';
 export class RoundCardComponent implements OnInit {
 
   @Input() title: string;
-  @Input() content: SelectItem[];
+  @Input() content: RoundCardItem[];
 
   constructor() { }
 

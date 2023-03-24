@@ -1,0 +1,29 @@
+{
+  "status": "OK",
+  "errors": null,
+  "result": {
+    "userId": "admin",
+    "userName": "管理員",
+    "roles": [4],
+    "urls": ["main", "profile"],
+    "sideNavObjs": [
+      {
+        "pageIcon": "person",
+        "pageName": "個人主頁",
+        "pageUrl": "main",
+        "childPages": [
+          {
+            "pageKey": 11,
+            "sourceId": 2,
+            "pageName": "帳戶資訊",
+            "pageIcon": "person",
+            "pageUrl": "profile",
+            "pageParent": 10,
+            "pageActive": "Y",
+            "pageOrder": null
+          }
+        ]
+      }
+    ]
+  }
+}

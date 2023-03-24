@@ -1,20 +1,15 @@
+import { environment } from 'src/environments/environment';
 
-const authUrl = '//.../auth/';
-const baseUrl = '//.../.../';
+const authUrl = `${environment.authUrl}`;
 
 export const config: any = {
 
-  //認證伺服器
-  roleUrl: authUrl + "authlist/get", // 取得角色權限
+  //auth server
   loginUrl: authUrl + "login", // 使用者登入
   logoutUrl: authUrl + "logout", // 使用者登出
   addUserUrl: authUrl + "user/add",
   jwtRegistUrl: authUrl + "register",
-  sideNavUrl: authUrl + "sidenav",
 
-  //其他api
-  testUrl: baseUrl + "test",
-  downloadCourseUrl: baseUrl + "report/course/summary",
 }
 
 export const key: any = {

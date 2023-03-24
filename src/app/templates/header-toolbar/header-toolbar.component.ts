@@ -1,8 +1,10 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { Observable } from "rxjs";
-import { ResponseObj } from "src/app/interface/common";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ResponseObj } from 'src/app/interface/common';
+
 import { LoginService } from './../../service/login.service';
+
 @Component({
   selector: "app-header-toolbar",
   templateUrl: "./header-toolbar.component.html",
@@ -20,12 +22,12 @@ export class HeaderToolbarComponent implements OnInit {
   }
 
   logout() {
-    this.loginService.logout().subscribe(
-      (data: ResponseObj) => {
+    // this.loginService.logout().subscribe(
+    //   (data: ResponseObj) => {
         sessionStorage.clear();
         this._router.navigateByUrl("login");
-      }
-    );
+    //   }
+    // );
   }
 
 }

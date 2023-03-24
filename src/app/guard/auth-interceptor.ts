@@ -1,14 +1,10 @@
-import {
-  HttpEvent,
-  HttpHandler,
-  HttpInterceptor,
-  HttpRequest
-} from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { Observable } from "rxjs";
-import { TokenWhiteList } from "../interface/common";
-import { SysCode } from "../interface/syscode";
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
+import { TokenWhiteList } from '../interface/common';
+import { SysCode } from '../interface/syscode';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {

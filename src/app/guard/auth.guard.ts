@@ -1,19 +1,15 @@
-import { Injectable } from "@angular/core";
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-  UrlTree
-} from "@angular/router";
-import { Observable } from "rxjs";
-import { SysCode } from "../interface/syscode";
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
+
+import { SysCode } from '../interface/syscode';
+import { UserInfo } from '../interface/user';
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   //return true 才可以訪問該頁面
   canActivate(
@@ -42,9 +38,8 @@ export class AuthGuard implements CanActivate {
   }
 
   checkUrl(url: string): boolean {
-    let authUrls: string[] = JSON.parse(
-      sessionStorage.getItem(SysCode.url_key)
-    );
+    let userInfo: UserInfo = JSON.parse(sessionStorage.getItem(SysCode.user_key));
+    let authUrls: string[] = userInfo.urls;
     return authUrls.includes(url.replace(',', '/'));// 在 url 中 main/profile 會變成 main,profile
   }
 }

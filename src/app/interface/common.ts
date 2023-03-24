@@ -1,18 +1,3 @@
-export interface SideNavObj {
-  pageIcon: string;
-  pageName: string;
-  pageUrl: string;
-  childPages: [
-    {
-      pageId: string;
-      pageIcon: string;
-      pageName: string;
-      pageUrl: string;
-      parent: string;
-    }
-  ];
-}
-
 export interface ResponseObj {
   status: string;
   errors: string[];
@@ -20,10 +5,17 @@ export interface ResponseObj {
 }
 
 export class TokenWhiteList {
-  urls: Array<string> = ["/login", "/logout", "/sidenav", "/test", "/register", "/authlist/get"];
+  urls: Array<string> = ["/login", "/test", "/register"];
 }
 
-export class ChoiceItem {
+export class SelectItem {
   description?: string;
-  value?: string;
+  value?: any;
+  type?: string;
+}
+
+export class RoundCardItem {
+  description?: string;
+  value?: any;
+  iconHtml?: string;
 }

@@ -1,11 +1,10 @@
 {
-  "name": "復健訓練管理系統",
-  "short_name": "復健訓練管理",
+  "name": "模板測試系統",
+  "short_name": "模板測試",
   "theme_color": "#000",
   "background_color": "#bbdefa",
   "display": "standalone",
   "orientation": "landscape-primary",
-  "scope": "/",
   "start_url": "/",
   "icons": [
     {

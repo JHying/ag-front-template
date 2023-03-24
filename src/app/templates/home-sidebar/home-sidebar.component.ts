@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDrawerToggleResult, MatSidenav } from '@angular/material/sidenav';
-import { FileSaverDirective, FileSaverService } from 'ngx-filesaver';
-import { Observable, of } from 'rxjs';
-import { ResponseObj } from 'src/app/interface/common';
-import { JwtUser } from 'src/app/interface/user';
+import { Router } from '@angular/router';
+import { FileSaverDirective } from 'ngx-filesaver';
+import { SideNavObj, UserInfo } from 'src/app/interface/user';
 
-import { SideNavObj } from './../../interface/common';
+import tokenData from './../../interface/mock-data/token.json';
 import { SysCode } from './../../interface/syscode';
-import { CommonService } from './../../service/common.service';
 import { LoginService } from './../../service/login.service';
 import { BaseComponent } from './../base/base.component';
 
@@ -15,17 +13,17 @@ import { BaseComponent } from './../base/base.component';
   selector: "app-home-sidebar",
   templateUrl: "./home-sidebar.component.html",
   styleUrls: ["./home-sidebar.component.css"],
-  providers: [CommonService, LoginService, FileSaverDirective],
+  providers: [LoginService, FileSaverDirective],
 })
 export class HomeSidebarComponent extends BaseComponent implements OnInit {
   status: MatDrawerToggleResult;
-  sideNavList$: Observable<SideNavObj[]>;
+  sideNavList: SideNavObj[];
   loading: boolean = false;
 
   constructor(
-    private commonService: CommonService,
     private loginService: LoginService,
-    private fileSaverService: FileSaverService
+    // private fileSaverService: FileSaverService,
+    private router: Router
   ) {
     super();
   }
@@ -33,6 +31,10 @@ export class HomeSidebarComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.initSideNav();
     this.initToken();
+    //防止 sessionStorage 被竄改
+    window.addEventListener('storage', function (e) {
+      this.sessionStorage.setItem(e.key, e.oldValue);
+    });
   }
 
   getSideNavStatus(sideNav: MatSidenav) {
@@ -41,34 +43,34 @@ export class HomeSidebarComponent extends BaseComponent implements OnInit {
     });
   }
 
+  checkRouterUrl(url: string) {
+    return this.router.url.includes(url);
+  }
+
   initSideNav() {
-    let userInfo = JSON.parse(sessionStorage.getItem(SysCode.user_key));
-    this.commonService
-      .getSideNav(userInfo)
-      .pipe(super.takeUntilDestroy())
-      .subscribe((data: ResponseObj) => {
-        this.sideNavList$ = of(<SideNavObj[]>data.result);
-      });
+    let userInfo: UserInfo = JSON.parse(sessionStorage.getItem(SysCode.user_key));
+    this.sideNavList = userInfo.sideNavObjs;
   }
 
   initToken() {
-    this.loginService
-      .updateToken(new JwtUser())
-      .pipe(super.takeUntilDestroy())
-      .subscribe((data: ResponseObj) => {
-        //儲存 token 以利後續使用
-        sessionStorage.setItem(SysCode.token_key, data.result);
-      });
+    // this.loginService
+    //   .updateToken(new JwtUser())
+    //   .pipe(super.takeUntilDestroy())
+    //   .subscribe((data: ResponseObj) => {
+    //     //儲存 token 以利後續使用
+    //     sessionStorage.setItem(SysCode.token_key, data.result);
+    //   });
+    sessionStorage.setItem(SysCode.token_key, tokenData.result);//先用假資料
   }
 
   // downloadCourse() {
   //   this.loading = true;
-  //   this.commonService
+  //   this.fileService
   //     .getCourseReport()
   //     .pipe(super.takeUntilDestroy())
   //     .subscribe((data) => {
   //       var blob = new Blob([data.body], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
-  //       this.fileSaverService.save(blob, '復健紀錄.xlsx');
+  //       this.fileSaverService.save(blob, '運動紀錄.xlsx');
   //       this.loading = false;
   //     });
   // }
