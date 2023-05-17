@@ -8,22 +8,19 @@ import { Component, HostListener, OnInit } from '@angular/core';
 export class PwaInstallComponent implements OnInit {
 
   deferredPrompt: any;
-  showButton = true;
+  showButton = false;
 
   constructor() { }
 
   ngOnInit() {
-    //註冊 service-worker 腳本，因為使用SSL自簽憑證，無法被SW接受，這邊先不註冊
-    // if ('serviceWorker' in navigator) {
-    //   navigator.serviceWorker.register('/ngsw-worker.js').then(function (registration) {
-    //     // console.log('service worker regist successful.');
-    //   }).catch(function (error) {
-    //     console.log('fail to regist service worker:', error);
-    //   });
-    // }
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./ngsw-worker.js').then(function (registration) {
+      }).catch(function (error) {
+        console.log('service worker error:', error);
+      });
+    }
   }
 
-  //避免剛進入網站就跳出安裝視窗
   @HostListener('window:beforeinstallprompt', ['$event'])
   onbeforeinstallprompt(e) {
     // Prevent Chrome 67 and earlier from automatically showing the prompt
